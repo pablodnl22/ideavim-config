@@ -1,0 +1,60 @@
+set visualbell
+set ignorecase
+
+set relativenumber
+set number
+
+" set noerrorbells
+map <C-o> <Action>(Back)<CR>
+map <C-i> <Action>(Forward)<CR>
+map <TAB> <Action>(EditorTab)<CR>
+
+map ]] ]m
+map [[ [m
+
+set clipboard+=unnamed
+
+Plug 'easymotion/vim-easymotion'
+
+let mapleader = " " "map leader to Space
+set easymotion
+map <Leader> <Plug>(easymotion-prefix)
+
+:nnoremap <leader>; $a;<Esc>
+
+:nnoremap <leader>, $a;<Esc>
+
+:nnoremap <C-d> <C-d>zz
+:nnoremap <C-u> <C-u>zz
+:imap jk <Esc>
+
+:xnoremap <leader>p \"_dP
+:xnoremap <leader>d \"_d
+:xnoremap <leader>c \"_c
+
+nnoremap mH :action ToggleBookmark0<CR>
+nnoremap mN :action ToggleBookmark1<CR>
+nnoremap mT :action ToggleBookmark2<CR>
+nnoremap <C-h> :action GotoBookmark0<CR>
+nnoremap <C-n> :action GotoBookmark1<CR>
+nnoremap <C-t> :action GotoBookmark2<CR>
+
+:nnoremap <leader>bs :action ShowBookmarks<CR>
+:nnoremap <leader>i :action GotoImplementation<CR>
+
+nnoremap <leader>gU viwgUU<ESC>
+
+nnoremap <leader>pv :action ActivateProjectToolWindow<CR>
+nnoremap <leader>po :action SelectInProjectView<CR>
+nnoremap <leader>sv :action ActivateStructureToolWindow<CR>
+nnoremap <leader>so :action SelectInStructureView<CR>
+
+nnoremap <C-j> J\"_x<ESC>
+nnoremap <leader>o o<ESC>k
+nnoremap <leader>O O<ESC>j
+
+nnoremap ; ,
+nnoremap , ;
+
+" source ~/.ideavimrc apply changes :so do not found"
+" double shift and track action ids"
