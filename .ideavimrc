@@ -26,17 +26,49 @@ nnoremap <C-u> <C-u>zz
 imap jk <Esc>
 
 " visual mode "
-xnoremap <leader>p \"_dP
+xnoremap <leader>p \"_d\"0P
 xnoremap <leader>d \"_d
 xnoremap <leader>c \"_c
 xnoremap <leader>y \"+y
-xnoremap <leader>f \"0y/<C-r>0<CR>
 
-nnoremap mH :action ToggleBookmark0<CR>
-nnoremap mN :action ToggleBookmark1<CR>
+" search for it
+xnoremap <leader>f \"ay/<C-R>a<CR>
+nnoremap <leader>f :noh<CR>
+nnoremap n nzz
+nnoremap N Nzz
+
+"fancy selections wrap test"
+function! WrapText(start, end)
+    execute "normal! `>a".a:end
+    execute "normal! `<i".a:start
+endfunction
+
+function! RemoveParenthesesInSelection()
+    " Use s command to search and 'replace' in the selection
+    s/\v\(([^)]+)\)/\1/
+    execute "normal! `>b"
+endfunction
+
+function! RemoveSimpleQuotesInSelection()
+    " Use s command to search and 'replace' in the selection
+    s/\v'([^']+)'/\1/
+    execute "normal! `>b"
+endfunction
+
+xnoremap <leader>wp :call WrapText('(', ')')<CR>
+xnoremap <leader>wc :call WrapText("'", "'")<CR>
+xnoremap <leader>rp :call RemoveParenthesesInSelection()<CR>
+xnoremap <leader>rc :call RemoveSimpleQuotesInSelection()<CR>
+
+" move selected lines up and down nicely
+xnoremap J :m '>+1<CR>gv=gv
+xnoremap K :m '<-2<CR>gv=gv
+
+nnoremap mN :action ToggleBookmark0<CR>
+nnoremap mB :action ToggleBookmark1<CR>
 nnoremap mT :action ToggleBookmark2<CR>
-nnoremap <C-h> :action GotoBookmark0<CR>
-nnoremap <C-n> :action GotoBookmark1<CR>
+nnoremap <C-n> :action GotoBookmark0<CR>
+nnoremap <C-b> :action GotoBookmark1<CR>
 nnoremap <C-t> :action GotoBookmark2<CR>
 
 nnoremap <leader>bs :action ShowBookmarks<CR>
@@ -44,19 +76,24 @@ nnoremap <leader>i :action GotoImplementation<CR>
 
 nnoremap <leader>gU viwgUU<ESC>
 
+" project view and navigation"
 nnoremap <leader>pv :action ActivateProjectToolWindow<CR>
 nnoremap <leader>po :action SelectInProjectView<CR>
 nnoremap <leader>sv :action ActivateStructureToolWindow<CR>
 nnoremap <leader>so :action SelectInStructureView<CR>
+nnoremap <leader><space> :action RecentFiles<CR>
 
 nnoremap <C-j> J\"_x<ESC>
 nnoremap <leader>o o<ESC>k
 nnoremap <leader>O O<ESC>j
 
+" go to next/previous parenthesis"
 nnoremap <leader>gp f)
 nnoremap <leader>gP f(
 xnoremap <leader>gp f)
 xnoremap <leader>gP f(
+
+nnoremap <leader>w :wa<CR>
 
 " source ~/.ideavimrc apply changes :so do not found"
 " double shift and track action ids"
