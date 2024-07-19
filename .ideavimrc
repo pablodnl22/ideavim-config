@@ -26,7 +26,7 @@ nnoremap <C-u> <C-u>zz
 imap jk <Esc>
 
 " visual mode "
-xnoremap <leader>p \"_d\"0P
+xnoremap <leader>p \"0P
 xnoremap <leader>d \"_d
 xnoremap <leader>c \"_c
 xnoremap <leader>y \"+y
@@ -71,7 +71,6 @@ nnoremap <C-n> :action GotoBookmark0<CR>
 nnoremap <C-b> :action GotoBookmark1<CR>
 nnoremap <C-t> :action GotoBookmark2<CR>
 
-nnoremap <leader>bs :action ShowBookmarks<CR>
 nnoremap <leader>i :action GotoImplementation<CR>
 
 nnoremap <leader>gU viwgUU<ESC>
@@ -87,13 +86,17 @@ nnoremap <C-j> J\"_x<ESC>
 nnoremap <leader>o o<ESC>k
 nnoremap <leader>O O<ESC>j
 
-" go to next/previous parenthesis"
-nnoremap <leader>gp f)
-nnoremap <leader>gP f(
-xnoremap <leader>gp f)
-xnoremap <leader>gP f(
-
 nnoremap <leader>w :wa<CR>
+nnoremap gb :bn<CR>
+nnoremap <leader>b :b#<CR>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"split commas"
+vnoremap <leader>sc :s/\v,/,\r/g<CR>
 
 " source ~/.ideavimrc apply changes :so do not found"
 " double shift and track action ids"
