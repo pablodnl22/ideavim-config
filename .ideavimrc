@@ -71,7 +71,11 @@ nnoremap <C-n> :action GotoBookmark0<CR>
 nnoremap <C-b> :action GotoBookmark1<CR>
 nnoremap <C-t> :action GotoBookmark2<CR>
 
+" Go to actions
 nnoremap <leader>i :action GotoImplementation<CR>
+nnoremap <leader>pr :action GotoDeclaration<CR>
+nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>e :action ShowErrorDescription<CR>
 
 nnoremap <leader>gU viwgUU<ESC>
 
@@ -94,6 +98,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+nnoremap <C-c> ciw
 
 "split commas"
 vnoremap <leader>sc :s/\v,/,\r/g<CR>
